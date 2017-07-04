@@ -1,4 +1,5 @@
 FROM jboss/wildfly
+user root
 RUN ln -sf /dev/stdout /var/log/jbossout.log 
 RUN ln -sf /dev/stderr /var/log/jbosserr.log
 RUN /opt/jboss/wildfly/bin/add-user.sh admin Admin#70365 --silent
