@@ -10,8 +10,8 @@ fi
 
 
 
-#exec 1> $FILE
-#exec 2> $FILE 
+exec 1> $FILE
+exec 2> $FILE 
 
 echo " starting wildfly in standalone mode "
 /opt/jboss/wildfly/bin/standalone.sh  -b  0.0.0.0 -bmanagement 0.0.0.0   
