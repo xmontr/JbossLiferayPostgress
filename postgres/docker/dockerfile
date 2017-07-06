@@ -1,3 +1,5 @@
 from amazonlinux
 
-RUN yum -y install postgresql94 
+
+RUN yum -y install postgresql94-server 
+RUN yum -y install postgresql94
