@@ -25,11 +25,11 @@ VOLUME  ["/var/lib/pgsql94/"]
 
 
 
-RUN  service  postgresql94 initdb
- RUN service  postgresql94 start
+#RUN  service  postgresql94 initdb
+#RUN service  postgresql94 start
  
- USER postgres
+# USER postgres
  
- RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
+ #RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
     createdb -O docker docker
  
