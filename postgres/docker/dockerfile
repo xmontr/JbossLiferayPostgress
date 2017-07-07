@@ -34,7 +34,7 @@ USER postgres
 #RUN service  postgresql94 start
 RUN   pg_ctl94 start -l logfile -D /var/lib/pgsql94/data/
  
-
+RUN  pg_ctl94 status  -l logfile -D /var/lib/pgsql94/data/ 
  
  RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
     createdb -O docker docker
