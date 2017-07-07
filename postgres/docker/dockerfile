@@ -24,9 +24,11 @@ EXPOSE 5432
 VOLUME  ["/var/lib/pgsql94/"]
 
 
-USER postgres
+
 RUN  service  postgresql94 initdb
  RUN service  postgresql94 start
+ 
+ USER postgres
  
  RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
     createdb -O docker docker
