@@ -23,7 +23,7 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /var/lib/pgsql94/data/pg_hba.conf
 RUN echo "listen_addresses='*'" >> /var/lib/pgsql94/data/postgresql.conf
 
 # Expose the PostgreSQL port
-EXPOSE 5432
+
 
 # Add VOLUMEs to allow backup of config, logs and databases
 VOLUME  ["/var/lib/pgsql94/"]
@@ -31,11 +31,13 @@ VOLUME  ["/var/lib/pgsql94/"]
 
 USER postgres
 
-#RUN service  postgresql94 start
-RUN   pg_ctl94 start -l logfile -D /var/lib/pgsql94/data/
+
+RUN   /usr/lib64/pgsql94/bin/pg_ctl -D /var/lib/pgsql94/data -l logfile start
  
-RUN  pg_ctl94 status  -l logfile -D /var/lib/pgsql94/data/ 
+RUN  /usr/lib64/pgsql94/bin/pg_ctl -D /var/lib/pgsql94/data -l logfile status 
  
  RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
     createdb -O docker docker
  
+ 
+ EXPOSE 5432
