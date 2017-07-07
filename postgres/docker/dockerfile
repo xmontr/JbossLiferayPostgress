@@ -9,6 +9,7 @@ RUN echo "NETWORKING=yes" > /etc/sysconfig/network
 
 RUN yum -y install postgresql94-server 
 RUN yum -y install postgresql94
+RUN yum -y install vim
 #make some clean up before init db 
 RUN  rm -rf /var/lib/pgsql94/data/*
 
@@ -28,7 +29,7 @@ EXPOSE 5432
 VOLUME  ["/var/lib/pgsql94/"]
 
 
-USER postgres
+#USER postgres
 
 #RUN service  postgresql94 start
  
