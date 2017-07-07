@@ -10,6 +10,10 @@ RUN echo "NETWORKING=yes" > /etc/sysconfig/network
 RUN yum -y install postgresql94-server 
 RUN yum -y install postgresql94
 
+USER postgres
+
+RUN  service  postgresql94 initdb
+
 # Adjust PostgreSQL configuration so that remote connections to the
 # database are possible.
 RUN echo "host all  all    0.0.0.0/0  md5" >> /var/lib/pgsql94/data/pg_hba.conf
@@ -25,11 +29,11 @@ VOLUME  ["/var/lib/pgsql94/"]
 
 
 
-#RUN  service  postgresql94 initdb
-#RUN service  postgresql94 start
+
+RUN service  postgresql94 start
  
-# USER postgres
+
  
- #RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
- #   createdb -O docker docker
+ RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
+    createdb -O docker docker
  
