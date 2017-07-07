@@ -1,3 +1,8 @@
+# instalation of postgresql server version 9.4 on top of amazon linux image
+# creation of one user docker  - db docker- password docker to access the server.
+
+
+
 from amazonlinux
 
 RUN echo "NETWORKING=yes" > /etc/sysconfig/network
