@@ -10,30 +10,5 @@ RUN echo "NETWORKING=yes" > /etc/sysconfig/network
 RUN yum -y install postgresql94-server 
 RUN yum -y install postgresql94
 
-USER postgres
 
-RUN  service  postgresql94 initdb
-
-# Adjust PostgreSQL configuration so that remote connections to the
-# database are possible.
-RUN echo "host all  all    0.0.0.0/0  md5" >> /var/lib/pgsql94/data/pg_hba.conf
-
-# And add ``listen_addresses`` to ``/var/lib/pgsql94/data/postgresql.conf``
-RUN echo "listen_addresses='*'" >> /var/lib/pgsql94/data/postgresql.conf
-
-# Expose the PostgreSQL port
-EXPOSE 5432
-
-# Add VOLUMEs to allow backup of config, logs and databases
-VOLUME  ["/var/lib/pgsql94/"]
-
-
-
-
-RUN service  postgresql94 start
- 
-
- 
- RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
-    createdb -O docker docker
  
