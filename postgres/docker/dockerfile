@@ -9,7 +9,7 @@ RUN echo "NETWORKING=yes" > /etc/sysconfig/network
 
 RUN yum -y install postgresql94-server 
 RUN yum -y install postgresql94
-
+#make some clean up before init db 
 RUN  rm -rf /var/lib/pgsql94/data/*
 
 RUN  service  postgresql94 initdb
@@ -30,10 +30,10 @@ VOLUME  ["/var/lib/pgsql94/"]
 
 USER postgres
 
-RUN service  postgresql94 start
+#RUN service  postgresql94 start
  
 
  
- RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
-    createdb -O docker docker
+ #RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
+ #   createdb -O docker docker
  
