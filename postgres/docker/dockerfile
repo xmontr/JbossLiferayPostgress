@@ -34,7 +34,7 @@ USER postgres
 
 RUN   /usr/lib64/pgsql94/bin/pg_ctl -D /var/lib/pgsql94/data -l logfile start
  
-RUN  /usr/lib64/pgsql94/bin/pg_ctl -D /var/lib/pgsql94/data -l logfile status 
+#RUN  /usr/lib64/pgsql94/bin/pg_ctl -D /var/lib/pgsql94/data -l logfile status 
  
  RUN psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
     createdb -O docker docker
